@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Fundamentals Assignment</title>
+  <style>
+    /* ======================= */
+    /* CSS Styles */
+    /* ======================= */
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    section {
+        background-color: white;
+        margin: 20px;
+        padding: 15px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        margin: 5px 0;
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .highlight {
+        background-color: #ffeb3b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JavaScript Fundamentals Demo</h1>
+    <p>Interactive page demonstrating JS variables, functions, loops, and DOM manipulation.</p>
+  </header>
+
+  <main>
+    <!-- Part 1: Variables & Conditionals -->
+    <section id="part1">
+      <h2>Part 1: Variables & Conditionals</h2>
+      <label for="ageInput">Enter your age:</label>
+      <input type="number" id="ageInput" placeholder="Enter age">
+      <button id="checkAgeBtn">Check Age</button>
+      <p id="ageResult"></p>
+    </section>
+
+    <!-- Part 2: Functions -->
+    <section id="part2">
+      <h2>Part 2: Functions</h2>
+      <label for="numInput">Enter a number:</label>
+      <input type="number" id="numInput" placeholder="Enter number">
+      <button id="doubleBtn">Double it!</button>
+      <p id="doubleResult"></p>
+    </section>
+
+    <!-- Part 3: Loops -->
+    <section id="part3">
+      <h2>Part 3: Loops</h2>
+      <button id="countBtn">Countdown 5 to 1</button>
+      <ul id="countList"></ul>
+    </section>
+
+    <!-- Part 4: DOM Manipulation -->
+    <section id="part4">
+      <h2>Part 4: DOM Interaction</h2>
+      <button id="changeTextBtn">Change Header Text</button>
+      <button id="addItemBtn">Add Item to List</button>
+      <ul id="dynamicList">
+        <li>Initial Item</li>
+      </ul>
+      <button id="toggleColorBtn">Toggle Background Color</button>
+    </section>
+  </main>
+
+  <script>
+    /* ======================= */
+    /* JavaScript */
+    /* ======================= */
+
+    // Part 1: Variables & Conditionals
+    document.getElementById("checkAgeBtn").addEventListener("click", function() {
+        let age = parseInt(document.getElementById("ageInput").value);
+        let result = "";
+        if (age >= 18) {
+            result = "You are an adult.";
+        } else {
+            result = "You are a minor.";
+        }
+        document.getElementById("ageResult").textContent = result;
+    });
+
+    // Part 2: Functions
+    function doubleNumber(num) {
+        return num * 2;
+    }
+
+    document.getElementById("doubleBtn").addEventListener("click", function() {
+        let num = parseInt(document.getElementById("numInput").value);
+        let doubled = doubleNumber(num);
+        document.getElementById("doubleResult").textContent = `Doubled: ${doubled}`;
+    });
+
+    function greet(name) {
+        return `Hello, ${name}! Welcome to JS learning.`;
+    }
+
+    // Part 3: Loops
+    document.getElementById("countBtn").addEventListener("click", function() {
+        let list = document.getElementById("countList");
+        list.innerHTML = "";
+        for (let i = 5; i >= 1; i--) {
+            let li = document.createElement("li");
+            li.textContent = i;
+            list.appendChild(li);
+        }
+    });
+
+    // Part 4: DOM Manipulation
+    document.getElementById("changeTextBtn").addEventListener("click", function() {
+        document.querySelector("header h1").textContent = "Header Changed via JS!";
+    });
+
+    document.getElementById("addItemBtn").addEventListener("click", function() {
+        let newItem = document.createElement("li");
+        newItem.textContent = `Item ${document.getElementById("dynamicList").children.length + 1}`;
+        document.getElementById("dynamicList").appendChild(newItem);
+    });
+
+    document.getElementById("toggleColorBtn").addEventListener("click", function() {
+        document.body.classList.toggle("highlight");
+    });
+  </script>
+</body>
+</html>
