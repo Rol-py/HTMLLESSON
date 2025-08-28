@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Multipage website project showcasing HTML, CSS, and JS skills.">
+    <title>My Multipage Website</title>
+    <style>
+        /* === CSS STYLES === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            line-height: 1.6;
+        }
+        header, nav, main, footer {
+            padding: 20px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+        nav {
+            background: #444;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #555;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+            table, th, td {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- === HEADER === -->
+    <header>
+        <h1>My Multipage Website</h1>
+        <p>Responsive, interactive, and fully semantic</p>
+    </header>
+
+    <!-- === NAVIGATION === -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- === MAIN CONTENT === -->
+    <main>
+        <!-- HOME SECTION -->
+        <section id="home">
+            <h2>Welcome</h2>
+            <p>This is the home section of my multipage website project.</p>
+            <ul>
+                <li>HTML5 Semantic Structure</li>
+                <li>CSS Styling and Box Model</li>
+                <li>JavaScript Interactivity</li>
+            </ul>
+            <ol>
+                <li>Plan your layout</li>
+                <li>Build HTML structure</li>
+                <li>Style with CSS</li>
+                <li>Add JavaScript features</li>
+            </ol>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <h2>About</h2>
+            <p>This website demonstrates responsive design, accessibility, and interactive components.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Responsive Design</td>
+                        <td>Adapts to all screen sizes using media queries.</td>
+                    </tr>
+                    <tr>
+                        <td>Interactive Elements</td>
+                        <td>Buttons, forms, and toggles powered by JavaScript.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <img src="https://via.placeholder.com/400x200" alt="Sample Image" style="max-width:100%; height:auto;">
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services">
+            <h2>Services</h2>
+            <p>Our services include web development, UI/UX design, and responsive layouts.</p>
+            <button class="btn" onclick="toggleMessage()">Click Me!</button>
+            <p id="message" style="display:none; margin-top:10px;">You clicked the button! JavaScript is working.</p>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required><br><br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your email" required><br><br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Message</legend>
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" placeholder="Subject" required><br><br>
+
+                    <label for="messageText">Message:</label>
+                    <textarea id="messageText" name="messageText" placeholder="Your message" required></textarea><br><br>
+                </fieldset>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <p>&copy; 2025 My Multipage Website</p>
+    </footer>
+
+    <!-- === JAVASCRIPT === -->
+    <script>
+        // Toggle message in Services section
+        function toggleMessage() {
+            const msg = document.getElementById('message');
+            if(msg.style.display === 'none') {
+                msg.style.display = 'block';
+            } else {
+                msg.style.display = 'none';
+            }
+        }
+
+        // Basic form validation
+        document.getElementById('contactForm').addEventListener('submit', function(e){
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const messageText = document.getElementById('messageText').value.trim();
+
+            if(!name || !email || !password || !subject || !messageText) {
+                alert('Please fill in all fields.');
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
